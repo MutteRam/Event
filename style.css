@@ -1,0 +1,450 @@
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg,#f7fbff 0%, #f4f8fb 100%);
+  margin: 0;
+  padding: 0;
+  color: #0f1724;
+}
+
+header {
+  background: linear-gradient(90deg,#ff6a00,#ff3d00);
+  color: white;
+  padding: 20px 24px;
+  border-radius: 0 0 14px 14px;
+}
+
+section {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(16,24,40,0.06);
+}
+
+input, select, textarea, button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6eef7;
+  background: #fbfdff;
+  font-size: 14px;
+}
+
+button {
+  background: #0b74b0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: all .15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(11,116,176,0.12);
+}
+
+/* App shell */
+.app-shell{display:flex;min-height:100vh;height:100vh;overflow:hidden}
+.sidebar{width:280px;background:#04212a;color:#fff;padding:28px 20px;display:flex;flex-direction:column;gap:16px;overflow:auto;position:fixed;left:0;top:0;bottom:0}
+.sidebar .brand{font-weight:800;font-size:22px;letter-spacing:0.4px}
+.sidebar nav{display:flex;flex-direction:column;gap:8px}
+.nav-btn{background:transparent;border:0;color:inherit;padding:10px 8px;text-align:left;border-radius:8px;cursor:pointer;font-weight:600}
+.nav-btn:hover{background:rgba(255,255,255,0.04)}
+.sidebar-footer{
+  margin-top:auto;
+  /* keep footer visible inside the scrolling sidebar */
+  position:sticky;
+  bottom:20px;
+  z-index:10005;
+  padding-top:8px;
+}
+/* Ensure footer buttons are full-width and visible */
+.sidebar-footer button{width:100%;display:block;padding:10px 12px;border-radius:10px;font-weight:700}
+.sidebar-footer button#logoutBtn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.06)}
+.sidebar-footer .small{display:block;width:100%;margin-top:8px}
+.main{flex:1;padding:32px 40px;margin-left:280px;overflow:auto;height:100vh}
+.view.hidden{display:none}
+
+/* Login section styles */
+.login-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;margin-bottom:14px}
+.login-icons{display:flex;gap:12px}
+.login-icons .icon{width:68px;height:68px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#fff;border:1px solid rgba(10,25,41,0.04);box-shadow:0 8px 20px rgba(11,74,110,0.04);color:#fff}
+.login-icons .icon svg{width:34px;height:34px}
+.login-icons .icon.primary{background:linear-gradient(180deg,#ff6a00,#ff3d00);color:#fff}
+.login-icons .icon.secondary{background:linear-gradient(180deg,#6c5ce7,#00b894);color:#fff}
+.login-hero h1{margin:0;font-size:20px;color:#062a3a;font-weight:800}
+.login-hero .subheading{margin:0;color:#556;font-size:15px;font-weight:600}
+
+.login-form{max-width:420px;margin:0 auto}
+.login-form input{border-radius:8px;border:1px solid #e9f2fb;padding:12px 14px;background:#fff}
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group .input-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--e-muted, #666);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.input-group input {
+  padding-left: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: var(--e-bg, #fff);
+}
+
+/* Remember me row in login form */
+.login-remember-row{display:flex;align-items:center;gap:10px;margin-top:6px}
+.login-remember-row label{display:flex;align-items:center;gap:8px;font-size:13px}
+/* actions row for login/register toggles */
+.login-actions-row{margin-top:8px;display:flex;gap:8px;justify-content:space-between;align-items:center}
+
+@media (max-width: 480px) {
+  .input-group .input-icon { left: 10px; }
+  .input-group input { padding-left: 36px; }
+}
+.login-btn{background:linear-gradient(90deg,#6c5ce7,#00b894);color:#fff;border-radius:8px;padding:12px 14px;font-weight:700}
+.login-btn:hover{transform:none;box-shadow:0 10px 28px rgba(44,62,80,0.08)}
+
+/* Make the Create account button match the primary login button */
+#createAccountBtn{background:linear-gradient(90deg,#6c5ce7,#00b894);color:#fff;border-radius:8px;padding:10px 12px;font-weight:700;border:none}
+#createAccountBtn:hover{transform:none;box-shadow:0 10px 28px rgba(44,62,80,0.08)}
+
+.small{font-size:13px;padding:6px 8px;border-radius:8px;background:#eef8ff;border:1px solid #d6eeff;color:#084a6a}
+.insert-mobile{background:#e6ffef;border:1px solid #bff2c7}
+.delete-track{background:#ffecec;border:1px solid #f5c2c2}
+.support-panel{position:fixed;right:20px;bottom:80px;width:220px;background:#fff;padding:12px;border-radius:8px;box-shadow:0 8px 18px rgba(0,0,0,0.12);z-index:40}
+.support-panel h3{margin:0 0 8px 0}
+.support-actions{display:flex;gap:8px}
+.support-panel .muted{margin-top:8px;color:#111}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.event-card{background:#ffffff;padding:16px;border-radius:12px;border:1px solid rgba(10,25,41,0.04);box-shadow:0 8px 18px rgba(9,30,45,0.03)}
+
+/* Enhanced event card styles */
+.event-card { display:flex; flex-direction:column; overflow:hidden; }
+.event-card .card-image { height:96px; background: linear-gradient(135deg,#ffd7e2 0%, #ffd1a9 100%); }
+.event-card .card-image.engagement { background: linear-gradient(135deg,#c5e1ff 0%, #f6d6ff 100%); }
+.event-card .card-image.birthday { background: linear-gradient(135deg,#fff7c2 0%, #ffd9b3 100%); }
+.event-card .card-image.other { background: linear-gradient(135deg,#d7ffe0 0%, #cfe9ff 100%); }
+.card-body { padding:14px 16px 18px; display:flex; flex-direction:column; gap:8px; }
+.badge { display:inline-block; background:#ffefd8; color:#6b3d00; padding:6px 10px; border-radius:999px; font-weight:600; font-size:12px; align-self:flex-start; }
+.muted { color:#556; font-size:14px; margin:0; }
+.card-features { list-style: none; padding:0; margin:6px 0 12px; display:block; color:#444; font-size:13px; }
+.card-features li { margin:6px 0; }
+.how-we-handle{list-style:disc; margin:6px 0 0 18px; padding:0; color:#334; font-size:13px; line-height:1.3}
+.how-we-handle li{margin:4px 0}
+.card-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; }
+.price { font-weight:700; color:#1a1a1a; }
+.card-book { background:linear-gradient(90deg,#6c5ce7,#00b894); color: #fff; border:0; padding:8px 12px; border-radius:8px; cursor:pointer; font-weight:700; box-shadow:0 6px 18px rgba(44, 62, 80, 0.08); transition: transform .12s ease, box-shadow .12s; }
+.card-book:hover { transform: translateY(-2px); box-shadow:0 14px 30px rgba(40,50,80,0.12); }
+
+/* Tier selector */
+.tier-group{display:flex;gap:8px;margin-top:6px}
+.tier-btn{background:#f2f6fb;border:1px solid #e6eef7;padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:600;color:#0b3b52}
+.tier-btn.active{background:linear-gradient(90deg,#6c5ce7,#00b894);color:#fff;border-color:transparent;box-shadow:0 8px 20px rgba(44,62,80,0.08)}
+.event-card .price{min-width:84px;text-align:left}
+.mt-8{margin-top:8px}
+.muted{color:#667;font-size:14px;padding:12px}
+/* track card tweaks */
+.event-card{display:block}
+.mt-label{font-size:13px;margin-top:8px;display:block}
+#trackStatus{font-size:13px;color:green;margin-top:8px}
+.hidden{display:none}
+#track-quick input{width:92%;margin:6px 0;padding:10px}
+.note{background:#fff9e6;border-left:4px solid #ffd27a;padding:8px 10px;border-radius:6px;color:#6b4d00}
+/* Packages and services */
+#packageList{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.package-card{background:#fff;padding:12px;border-radius:8px;border:1px solid #eef6fb}
+.services-list{line-height:1.6}
+
+@media (max-width:800px){
+  /* On smaller screens, sidebar becomes off-canvas and controlled by JS */
+  .sidebar{transform:translateX(-110%);transition:transform .28s cubic-bezier(.2,.9,.2,1);display:flex;z-index:10001}
+  .app-shell{flex-direction:column}
+  .main{padding:14px}
+  .events-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+  .support-panel{right:12px;left:12px}
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+  .main{margin-left:0;padding:12px}
+  .login-hero{gap:6px}
+  .login-icons{gap:8px;flex-wrap:wrap;justify-content:center}
+  .login-icons .icon{width:56px;height:56px}
+  .login-hero h1{font-size:18px}
+
+  /* Make login form inputs slightly larger and full width */
+  .login-form{width:100%;padding:0 6px}
+  .login-form input, .input-group input{height:44px}
+
+  /* Move fixed back button slightly inward and down for mobiles */
+  .fixed-back{top:12px;right:12px;width:44px;height:44px}
+
+  /* Support bar condensed */
+  .support-bar{height:56px;padding:6px}
+  .support-bar .support-content{gap:8px;font-size:13px}
+
+  /* Bookings table -> stacked card list for narrow screens */
+  .bookings-table{display:block}
+  .bookings-table thead{display:none}
+  .bookings-table tbody tr{display:block;margin-bottom:12px;background:linear-gradient(180deg,#fff,#fbfdff);padding:12px;border-radius:10px;border:1px solid rgba(10,25,41,0.03)}
+  .bookings-table td{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:none}
+  .bookings-table td[data-label]{width:100%}
+  .bookings-table .actions-cell{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .bookings-table .cancelled-row td{opacity:0.6}
+
+  /* Toast width on small screens */
+  .toasts{left:12px;right:12px;top:80px;width:auto}
+}
+
+/* Additional mobile responsiveness tweaks */
+@media (max-width: 480px) {
+  /* Make primary actions full-width and large for touch */
+  .login-remember-row{flex-direction:column;align-items:stretch}
+  .login-remember-row label{order:2;width:100%;justify-content:flex-start}
+  .login-remember-row #loginSubmitBtn, #createAccountBtn{width:100%;display:block}
+  .login-actions-row{flex-direction:column;gap:10px}
+  .login-actions-row .small{width:100%;text-align:center}
+
+  /* Hide less important text and make profile control compact */
+  .top-profile-wrap{right:12px;top:12px}
+  .top-profile-name{display:none}
+  .top-profile-initials{width:36px;height:36px;font-size:14px}
+
+  /* Make client profile modal nearly full-screen on phones */
+  .client-profile-modal .client-profile-content{width:96%;max-width:96%;padding:12px;border-radius:10px}
+  .client-profile-footer{padding-top:8px}
+
+  /* Increase tappable area for small buttons throughout */
+  .small, .small-compact{padding:12px 14px;font-size:15px}
+
+  /* Support bar and fixed back adjustments to avoid overlapping content */
+  .support-bar{height:64px;padding:8px;bottom:0}
+  body{padding-bottom:90px}
+}
+
+/* Mobile hamburger (top-left) */
+.mobile-hamburger{position:fixed;left:12px;top:12px;z-index:10003;width:44px;height:44px;border-radius:8px;background:#fff;border:1px solid rgba(10,25,41,0.04);display:none;align-items:center;justify-content:center;padding:8px;cursor:pointer;color:#ff3d3d;box-shadow:0 6px 18px rgba(9,30,45,0.06)}
+.mobile-hamburger svg{display:block}
+
+/* visible on small screens */
+@media (max-width:800px){ .mobile-hamburger{display:flex} }
+
+/* overlay behind off-canvas sidebar */
+.nav-overlay{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(3,6,10,0.48);z-index:10000;transition:opacity .2s ease}
+.nav-overlay.hidden{opacity:0;visibility:hidden}
+.nav-overlay:not(.hidden){opacity:1;visibility:visible}
+
+/* when sidebar has .open class, slide it in */
+.sidebar.open{transform:translateX(0);box-shadow:0 20px 60px rgba(3,6,10,0.4)}
+
+/* make hamburger visibly active when nav is open */
+.mobile-hamburger.active{background:#ffefef;color:#b60b0b;box-shadow:0 10px 26px rgba(246,65,65,0.12)}
+
+/* Fixed back arrow color to red */
+.fixed-back svg{width:20px;height:20px;fill:none;stroke:#ff3d3d}
+
+/* close button inside the mobile nav */
+.mobile-nav-close{display:none;position:absolute;right:10px;top:8px;background:transparent;border:0;color:#fff;font-size:28px;line-height:1;padding:6px;cursor:pointer}
+@media (max-width:800px){ .mobile-nav-close{display:block} }
+
+/* Ensure body doesn't scroll when nav open (class toggled by JS) */
+body.nav-open{overflow:hidden}
+
+/* Dashboard advanced layout */
+.dashboard-hero{display:flex;justify-content:space-between;align-items:center;gap:18px;background:linear-gradient(90deg,rgba(11,116,176,0.06),rgba(255,106,0,0.03));padding:18px;border-radius:12px}
+.dashboard-hero h1{margin:0;font-size:22px}
+.dashboard-hero-head{display:flex;align-items:center;gap:12px}
+.live-controls{display:flex;align-items:center}
+.live-toggle{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#084a6a}
+.live-toggle input{display:none}
+.live-dot{width:10px;height:10px;border-radius:50%;background:#b8c6c9;display:inline-block;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.live-toggle input:checked + .live-dot{background:linear-gradient(90deg,#ff6aa3,#ff3d8f);box-shadow:0 6px 16px rgba(255,61,143,0.14)}
+
+/* Toasts */
+.toasts{position:fixed;right:20px;top:86px;width:300px;display:flex;flex-direction:column;gap:10px;z-index:9998}
+.toast{background:#fff;padding:10px 12px;border-radius:8px;box-shadow:0 10px 24px rgba(9,30,45,0.08);border-left:4px solid #6c5ce7;color:#062a3a;font-size:14px}
+.toast.small{font-size:13px;padding:8px}
+.toast.success{border-left-color:#00b894}
+.toast.warn{border-left-color:#ffb020}
+.toast .time{display:block;font-size:12px;color:#667;margin-top:6px}
+.hero-actions{display:flex;gap:8px;margin-top:12px}
+.hero-stats{display:flex;gap:12px}
+.stat{background:linear-gradient(180deg,#fff,#fbfdff);padding:12px;border-radius:10px;min-width:100px;text-align:center;box-shadow:0 6px 14px rgba(11,74,110,0.05)}
+.stat-value{font-size:20px;font-weight:700;color:#0b74b0}
+.stat-label{font-size:13px;color:#445}
+
+.dashboard-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-top:14px}
+.panel{background:#fff;padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(9,30,45,0.04)}
+
+/* Dashboard section neutral elegant override */
+#dashboard{background:linear-gradient(180deg,#f3f7fb 0%, #eef4fb 100%);padding:20px;border-radius:14px;box-shadow:0 12px 36px rgba(11,74,110,0.04);color:var(--e-primary)}
+#dashboard h2{color:var(--e-primary)}
+#dashboard .panel{background:linear-gradient(180deg,#fff,#fcfdff);border:1px solid rgba(15,23,36,0.03);box-shadow:var(--e-shadow)}
+#dashboard .muted{color:var(--e-muted)}
+.user-name{color:var(--e-pink);font-weight:800}
+.panel.featured .events-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.recent-list{list-style:none;padding:0;margin:0}
+.recent-list li{padding:10px;border-bottom:1px solid #f2f7fb}
+.recent-list li:last-child{border-bottom:0}
+
+/* New dashboard layout */
+.dashboard-new .dashboard-hero.split{display:flex;justify-content:space-between;align-items:center;gap:18px;background:linear-gradient(90deg,rgba(11,116,176,0.04),rgba(255,106,0,0.02));padding:18px;border-radius:12px}
+.new-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px}
+.left-column{display:flex;flex-direction:column;gap:18px}
+.right-column{display:flex;flex-direction:column;gap:12px}
+.small-panel{padding:12px}
+.calendar-placeholder{height:120px;border-radius:8px;background:linear-gradient(180deg,#fbfdff,#fff);display:flex;align-items:center;justify-content:center}
+
+/* Welcome + Services + Why Choose styles */
+.welcome-panel h3{margin:0 0 6px 0;color:#062a3a}
+.welcome-panel .muted{margin:0}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.service-card{background:linear-gradient(180deg,#fff,#fbfdff);padding:12px;border-radius:10px;border:1px solid rgba(10,25,41,0.04);box-shadow:0 8px 18px rgba(9,30,45,0.03)}
+.service-card h4{margin:0 0 6px 0}
+.why-choose .how-we-handle{margin:8px 0 0 18px}
+
+/* Bookings table */
+.bookings-table{width:100%;border-collapse:collapse;font-size:14px}
+.bookings-table th,.bookings-table td{padding:8px 10px;border-bottom:1px solid #f2f6fb;text-align:left}
+.bookings-table tbody tr:hover{background:linear-gradient(90deg,rgba(10,27,41,0.01),rgba(255,255,255,0.02))}
+.bookings-table .cancelled-row td{ opacity:0.5; text-decoration:line-through; }
+.small.danger{ background: #ff4d4f; color:#fff; border: none; padding:6px 8px; border-radius:6px; margin-left:6px; }
+.bookings-table .muted{color:#667;text-align:center}
+
+/* header area for bookings panel */
+.panel .panel-header{display:flex;justify-content:space-between;align-items:center}
+
+.event-card{transition:transform .15s ease, box-shadow .15s ease}
+.event-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,74,110,0.08)}
+
+@media (max-width:900px){
+  .dashboard-grid{grid-template-columns:1fr}
+  .dashboard-hero{flex-direction:column;align-items:flex-start}
+  .hero-stats{width:100%;display:flex;justify-content:space-between}
+}
+
+/* planners panel */
+.planners-panel .event-card{display:flex;flex-direction:column;gap:8px}
+.planner-contacts{display:flex;gap:8px;align-items:center}
+.planner-contacts .muted{font-size:13px}
+.planner-actions{display:flex;gap:6px}
+.planner-actions .small{padding:8px 10px}
+.planner-contacts .small{font-size:13px}
+.planner-chip{display:inline-block;background:#eef8ff;padding:4px 8px;border-radius:999px;margin-right:6px;font-size:12px;color:#084a6a}
+
+/* locked/disabled nav button appearance */
+.nav-btn.locked, .nav-btn[disabled]{
+  opacity: 0.48;
+  cursor: not-allowed;
+  filter: grayscale(0.08);
+  pointer-events: none;
+}
+.nav-btn[disabled] { box-shadow: none; }
+
+/* Fixed circular back button (top-right) */
+.fixed-back{position:fixed;top:20px;right:20px;width:48px;height:48px;border-radius:50%;background:linear-gradient(180deg,#ff6aa3,#ff3d8f);border:1px solid rgba(255,61,143,0.08);box-shadow:0 8px 24px rgba(255,66,140,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;color:#ffffff}
+.fixed-back svg{width:20px;height:20px;fill:none;stroke:currentColor}
+.fixed-back:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,61,143,0.18)}
+.fixed-back:active{transform:translateY(0)}
+
+/* Top-right client profile control */
+.top-profile-wrap{position:fixed;top:18px;right:84px;z-index:10002;display:flex;align-items:center;gap:8px}
+.top-profile-btn{display:flex;align-items:center;gap:8px;background:transparent;border:0;cursor:pointer;color:#062a3a;padding:6px;border-radius:8px}
+.top-profile-btn:focus{outline:2px solid rgba(108,92,231,0.18);outline-offset:2px}
+.top-profile-initials{width:36px;height:36px;border-radius:50%;background:linear-gradient(90deg,#6c5ce7,#00b894);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+.top-profile-name{font-weight:700;color:#062a3a}
+.top-profile-panel{position:fixed;top:64px;right:84px;z-index:10003}
+.top-profile-panel .panel{padding:10px;min-width:180px}
+.top-profile-panel-inner{padding:10px;min-width:180px}
+.top-profile-fullname{font-weight:800}
+.top-profile-email{font-size:13px}
+.top-profile-actions{margin-top:8px;display:flex;gap:8px;justify-content:flex-end}
+
+@media (max-width:800px){
+  /* move profile left on smaller screens and hide the name to save space */
+  .top-profile-wrap{right:72px}
+  .top-profile-name{display:none}
+}
+
+@media (max-width:600px){
+  .top-profile-wrap{right:64px}
+  .top-profile-initials{width:32px;height:32px;font-size:13px}
+}
+
+/* Top-right profile styles end */
+
+/* Client Profile modal */
+.client-profile-modal{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(3,6,10,0.48);display:flex;align-items:center;justify-content:center;z-index:10010}
+.client-profile-modal .client-profile-content{width:92%;max-width:720px;border-radius:12px;padding:18px;box-shadow:0 20px 60px rgba(3,6,10,0.3);background:linear-gradient(180deg,#fff,#fbfdff)}
+.client-profile-modal.hidden{display:none}
+.client-profile-header{display:flex;justify-content:space-between;align-items:center}
+.client-profile-header h3{margin:0}
+.client-profile-info .muted{margin-top:8px}
+.cp-list-item{padding:8px;border-radius:8px;background:linear-gradient(180deg,#fff,#fcfdff);border:1px solid rgba(10,25,41,0.03);margin-bottom:8px}
+.cp-small{font-size:13px;color:var(--e-muted)}
+
+/* client profile footer with compact close button */
+.client-profile-footer{display:flex;justify-content:flex-end;margin-top:12px}
+.small-compact{padding:6px 8px;font-size:12px;border-radius:8px}
+
+/* Fixed support bar at bottom */
+.support-bar{position:fixed;left:0;right:0;bottom:0;height:52px;background:linear-gradient(90deg,#ffffff,#fff7fb);border-top:1px solid rgba(10,25,41,0.04);display:flex;align-items:center;justify-content:center;z-index:9997;box-shadow:0 -6px 18px rgba(9,30,45,0.04)}
+.support-bar .support-content{display:flex;gap:12px;align-items:center;font-weight:700;color:#083827}
+.support-link{color:#0b74b0;text-decoration:none;padding:8px 12px;border-radius:8px;background:rgba(11,116,176,0.04)}
+.support-link:hover{background:rgba(11,116,176,0.08)}
+/* ensure main content isn't hidden behind the support bar */
+body{padding-bottom:70px}
+
+/* Elegant dashboard theme overrides */
+:root{--e-bg:#f6f8fb;--e-panel:#ffffff;--e-muted:#6b7280;--e-primary:#6c5ce7;--e-accent:#00b894;--e-pink:#ff6aa3;--e-shadow:0 14px 40px rgba(11,74,110,0.06)}
+
+/* subtle background shift for the whole page */
+body{background:linear-gradient(180deg,var(--e-bg) 0%, #f3f6fb 100%);} 
+
+/* dashboard hero refinements */
+.dashboard-hero{background:linear-gradient(90deg, rgba(108,92,231,0.05), rgba(0,184,148,0.03));padding:24px;border-radius:16px}
+.dashboard-hero h1{font-size:24px;margin:0;color:#062a3a;letter-spacing:0.2px}
+.dashboard-hero p.muted{color:var(--e-muted)}
+
+/* stat cards */
+.hero-stats .stat{min-width:140px;padding:18px 20px;border-radius:14px;box-shadow:var(--e-shadow);border:1px solid rgba(15,23,36,0.03);background:linear-gradient(180deg,#fff,#fcfdff)}
+.stat-value{font-size:24px;font-weight:800;color:var(--e-primary)}
+.stat-label{color:var(--e-muted);font-weight:600}
+
+/* panels */
+.panel{background:linear-gradient(180deg,var(--e-panel),#fcfdff);padding:18px;border-radius:14px;box-shadow:var(--e-shadow);border:1px solid rgba(15,23,36,0.03)}
+
+/* Profile styles removed */
+
+/* service card polish */
+.service-card{padding:16px;border-radius:12px;background:linear-gradient(180deg,#fff,#fcfdff);transition:transform .18s ease,box-shadow .18s ease}
+.service-card h4{margin:0 0 8px 0}
+.service-card p{color:var(--e-muted);margin:0}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(11,74,110,0.08)}
+
+/* hero actions / buttons */
+.hero-actions .small{background:transparent;border:1px solid rgba(15,23,36,0.06);color:#062a3a;padding:8px 12px;border-radius:10px;font-weight:700}
+.hero-actions .small:first-child{background:linear-gradient(90deg,var(--e-primary),var(--e-accent));color:#fff;border:none}
+
+/* subtle toast style */
+.toasts .toast{border-radius:12px;box-shadow:0 18px 40px rgba(11,74,110,0.06);border-left-width:6px}
+
+/* small responsive tweaks */
+@media (max-width:900px){
+  .hero-stats{flex-direction:row;gap:8px}
+  .hero-stats .stat{min-width:90px;padding:12px}
+  .services-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+}
+

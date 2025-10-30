@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Planner | Weddings, Birthdays, Engagements</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Mobile hamburger (visible on small screens) -->
+    <button id="mobileHamburger" class="mobile-hamburger" aria-label="Open navigation" title="Open navigation">
+      <!-- three dashes / hamburger icon -->
+      <svg width="22" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="2" rx="1" fill="currentColor" />
+        <rect x="3" y="11" width="18" height="2" rx="1" fill="currentColor" />
+        <rect x="3" y="17" width="18" height="2" rx="1" fill="currentColor" />
+      </svg>
+    </button>
+
+    <!-- overlay used when mobile nav is open -->
+    <div id="navOverlay" class="nav-overlay hidden" tabindex="-1" aria-hidden="true"></div>
+
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+      <button id="mobileNavClose" class="mobile-nav-close" aria-label="Close navigation" title="Close navigation">×</button>
+      <div class="brand">Dream Moments</div>
+      <nav>
+        <button class="nav-btn" data-view="dashboard">Dashboard</button>
+        <button class="nav-btn" data-view="book">Book Event</button>
+        <button class="nav-btn" data-view="services">Services</button>
+        <button class="nav-btn" data-view="packages">Packages</button>
+  <button class="nav-btn" data-view="planners">Planners</button>
+        <button class="nav-btn" data-view="add">Add</button>
+        <button class="nav-btn" data-view="contact">Contact Us</button>
+  <button class="nav-btn" data-view="track" data-quick="send">Send Update</button>
+  <button class="nav-btn" id="supportBtn">24/7 Support</button>
+        <button class="nav-btn" data-view="login-section">Login</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Support Panel -->
+    <div id="supportPanel" class="support-panel hidden">
+      <h3>24/7 Support</h3>
+      <div class="support-actions">
+        <button class="small" id="supportCall">Call</button>
+        <button class="small" id="supportMail">Mail</button>
+      </div>
+      <div id="supportInfo" class="muted"></div>
+    </div>
+
+    <main class="main">
+      <section id="login-section" class="view">
+        <div class="login-hero">
+          <div class="login-icons" aria-hidden="false">
+            <div class="icon primary" title="Planner access">
+              <!-- user / planner SVG -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="currentColor" />
+                <path d="M4 20c0-3.314 2.686-6 6-6h4c3.314 0 6 2.686 6 6v1H4v-1z" fill="currentColor" />
+              </svg>
+            </div>
+            <div class="icon secondary" title="Events">
+              <!-- calendar / event SVG -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7 10h5v5H7z" fill="currentColor" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5 4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-1V2h-2v2H8V2H6v2H5zm0 4h14v10H5V8z" fill="currentColor" />
+              </svg>
+            </div>
+            <div class="icon" title="Secure">
+              <!-- lock SVG -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 17a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="currentColor"/>
+                <path d="M7 10V8a5 5 0 1110 0v2h1a1 1 0 011 1v8a1 1 0 01-1 1H6a1 1 0 01-1-1v-8a1 1 0 011-1h1zm2 0h6V8a3 3 0 00-6 0v2z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="icon" title="Schedule">
+              <!-- time/calendar SVG -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7 2v2M17 2v2M3 8h18M21 10v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 14v-4l3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <h1>Welcome To Event Planning</h1>
+          <h2 class="subheading">Login / Register</h2>
+        </div>
+
+        <form id="loginForm" class="login-form">
+          <div class="input-group">
+            <span class="input-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" fill="currentColor"/><path d="M7 6V4a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+
+          <div class="input-group">
+            <span class="input-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="currentColor"/><path d="M7 10V8a5 5 0 1110 0v2h1a1 1 0 011 1v8a1 1 0 01-1 1H6a1 1 0 01-1-1v-8a1 1 0 011-1h1zm2 0h6V8a3 3 0 00-6 0v2z" fill="currentColor"/></svg></span>
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+
+          <!-- Extra fields shown only when registering -->
+          <div class="input-group login-extra hidden">
+            <span class="input-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="currentColor"/></svg></span>
+            <input type="text" name="name" placeholder="Full Name">
+          </div>
+          <div class="input-group login-extra hidden">
+            <span class="input-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15.46v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 6.18 2 2 0 0 1 5 4h3a1 1 0 0 1 1 .75c.12.66.38 1.3.78 1.86a1 1 0 0 1-.24 1.32l-1.2 1a16 16 0 0 0 6.36 6.36l1-1.2a1 1 0 0 1 1.32-.24c.56.4 1.2.66 1.86.78A1 1 0 0 1 20 16v-1" fill="currentColor"/></svg></span>
+            <input type="text" name="phone" placeholder="Phone Number">
+          </div>
+
+          <div class="login-remember-row">
+            <label><input id="rememberMe" name="remember" type="checkbox"> Remember me</label>
+            <button type="submit" id="loginSubmitBtn" class="login-btn">Login</button>
+          </div>
+
+          <div class="login-actions-row">
+            <button type="button" id="createAccountBtn" class="small">Create account</button>
+            <button type="button" id="backToLoginBtn" class="small hidden">Back to login</button>
+          </div>
+        </form>
+        <p id="loginMsg"></p>
+      </section>
+      
+      
+
+      <section id="dashboard" class="view hidden dashboard-new">
+        <div class="dashboard-hero split">
+          <div>
+            <div class="dashboard-hero-head">
+              <h1>Welcome back, <span id="dashboardUser" class="user-name">Guest</span></h1>
+              <div class="live-controls">
+                <label class="live-toggle">
+                  <input type="checkbox" id="liveToggle">
+                  <span class="live-dot" id="liveDot"></span>
+                  Live
+                </label>
+              </div>
+            </div>
+            <p class="muted">Manage bookings, communicate with guests, and track upcoming events.</p>
+            <div class="hero-actions mt-8">
+              <button class="small" data-view="book">New Booking</button>
+              <button class="small" data-view="packages">Packages</button>
+                <button class="small" data-view="track" data-quick="send">Quick Update</button>
+                <button class="small" id="syncUserBtn">Sync User</button>
+            </div>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-value" id="statBookings">0</div>
+              <div class="stat-label">Bookings</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="statUpcoming">0</div>
+              <div class="stat-label">Upcoming</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="statMessages">0</div>
+              <div class="stat-label">Messages</div>
+            </div>
+          </div>
+        </div>
+        <!-- Toasts for real-time events -->
+        <div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
+
+        <div class="dashboard-grid new-grid mt-12">
+          <div class="left-column">
+            <!-- Welcome / Intro panel -->
+            <div class="panel welcome-panel">
+              <h3>Welcome to Dream Moments</h3>
+              <p class="muted">We craft memorable events — from intimate birthdays to grand weddings. Explore our services or start a booking to get a tailored plan.</p>
+              <div class="hero-actions mt-6"><button class="small" data-view="book">Start Booking</button><button class="small" data-view="contact">Contact Sales</button></div>
+            </div>
+
+            <!-- Our Services -->
+            <div class="panel services-panel mt-12">
+              <h3>Our Services</h3>
+              <div class="services-grid mt-6">
+                <div class="service-card">
+                  <h4>Weddings</h4>
+                  <p class="muted">Full-service wedding planning including venue, decor, catering and entertainment.</p>
+                </div>
+                <div class="service-card">
+                  <h4>Engagements</h4>
+                  <p class="muted">Intimate proposal setups, engagement parties and memorable experiences.</p>
+                </div>
+                <div class="service-card">
+                  <h4>Birthdays</h4>
+                  <p class="muted">Kids, adults, milestone birthdays — customized themes and activities.</p>
+                </div>
+                <div class="service-card">
+                  <h4>Others</h4>
+                  <p class="muted">Corporate events, launches, anniversaries and custom celebrations.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Why choose us -->
+            <div class="panel why-choose mt-12">
+              <h3>Why Choose Us</h3>
+              <ul class="how-we-handle">
+                <li>Experienced planners with local vendor network</li>
+                <li>Transparent pricing and flexible packages</li>
+                <li>24/7 support and day-of coordination</li>
+                <li>Custom design and attention to detail</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <div class="panel-header"><h3>Your Bookings</h3><button class="small" data-view="book">+ New</button></div>
+              <div class="booking-note muted small">For marriages, birthdays, engagements and other events: please book your slot 10–30 days before the event. You can cancel any event up to 7 days before the event start time. Cancellations within 7 days are not permitted.</div>
+              <div id="bookingsTableWrap">
+                <!-- bookings table rendered by JS -->
+                <table id="bookingsTable" class="bookings-table"><thead><tr><th>When</th><th>Type</th><th>Client</th><th>Venue</th><th></th></tr></thead><tbody><tr><td colspan="5" class="muted">No bookings yet</td></tr></tbody></table>
+              </div>
+            </div>
+
+            <div class="panel mt-12">
+              <h3>Featured Services</h3>
+              <div id="dashboardServices" class="services-list"></div>
+            </div>
+          </div>
+
+          <aside class="right-column">
+            <div class="panel small-panel">
+              <h4>Calendar</h4>
+              <div class="calendar-placeholder muted">(Calendar / availability preview)</div>
+            </div>
+
+            <div class="panel small-panel mt-12">
+              <h4>Recent Activity</h4>
+              <ul id="recentList" class="recent-list"><li class="muted">No recent activity</li></ul>
+            </div>
+
+            <div class="panel small-panel mt-12">
+              <h4>Quick Actions</h4>
+              <div class="hero-actions"><button class="small" data-view="packages">Manage Packages</button><button class="small" data-view="planners">Planners</button></div>
+              <div class="mt-6"><small id="syncResult" class="muted">Sync status will appear here.</small></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="book" class="view">
+        <h2>Book Event</h2>
+        <form id="bookingForm">
+          <input type="hidden" name="_edit_ts" id="editTs">
+          <input name="name" placeholder="Your Name" required>
+          <input name="email" type="email" placeholder="Email" required>
+          <input name="phone" placeholder="Phone Number">
+          <select name="eventType" aria-label="Event type">
+            <option value="">Select Event Type</option>
+            <option value="wedding">Wedding</option>
+            <option value="birthday">Birthday</option>
+            <option value="engagement">Engagement</option>
+            <option value="other">Other</option>
+          </select>
+          <input type="date" name="date" aria-label="Event date">
+          <input name="venue" placeholder="Venue / City">
+          <input name="guests" type="number" placeholder="Expected Guests">
+          <textarea name="notes" placeholder="Any special requests"></textarea>
+          <div class="mt-8">
+            <button type="submit" id="bookingSubmitBtn">Submit Booking</button>
+            <button type="button" id="cancelEditBtn" class="small danger hidden">Cancel Edit</button>
+          </div>
+        </form>
+        <p id="bookMsg"></p>
+      </section>
+      
+      <section id="track" class="view hidden">
+        <h2>Send Update (Mobile + Gmail)</h2>
+        <form id="trackForm">
+          <div id="track-full">
+            <input name="eventId" placeholder="Event ID or name">
+            <label class="mt-label">Choose method</label>
+            <select name="method" aria-label="Delivery method">
+              <option value="mobile">Mobile</option>
+              <option value="gmail">Gmail</option>
+            </select>
+            <input name="mobile" placeholder="Mobile Number">
+            <input name="gmail" placeholder="Gmail ID">
+            <textarea name="note" placeholder="Notes"></textarea>
+            <div class="note">Note: After sending the number or Gmail, our team will update you within 6 hours.</div>
+            <div class="mt-8"><button type="submit">Send Update</button></div>
+          </div>
+          <div id="track-quick" class="hidden">
+            <input name="mobile_q" placeholder="Mobile Number">
+            <input name="gmail_q" placeholder="Gmail ID">
+            <div class="note">Note: After sending the number or Gmail, our team will update you within 6 hours.</div>
+            <div class="mt-8"><button type="submit">Send Update</button></div>
+          </div>
+        </form>
+        <div id="trackStatus" aria-live="polite"></div>
+        <div id="trackDebug" class="muted"></div>
+        <div id="trackList"></div>
+      </section>
+      
+      <section id="services" class="view hidden">
+        <h2>Services</h2>
+        <p>We offer planning, catering, decoration, photography and more. Choose a package or contact us for custom packages.</p>
+      </section>
+
+        <section id="planners" class="view hidden">
+          <h2>Related Event Planners</h2>
+          <div class="panel">
+            <div id="plannersList" class="events-grid"></div>
+            <hr />
+            <h4 class="mt-8">Add Your Planner</h4>
+            <form id="addPlannerForm">
+              <input name="pname" placeholder="Planner name" required />
+              <input name="pphone" placeholder="Phone" />
+              <input name="pmail" placeholder="Email" />
+              <label class="mt-label">Event types</label>
+              <select name="types" multiple size="4" aria-label="Event types">
+                <option value="marriage">Marriage</option>
+                <option value="engagement">Engagement</option>
+                <option value="birthday">Birthday</option>
+                <option value="other">Other</option>
+              </select>
+              <label class="mt-label">Tier</label>
+              <select name="tier" aria-label="Tier">
+                <option value="classic">Classic</option>
+                <option value="premium">Premium</option>
+                <option value="ultra">Ultra Premium</option>
+              </select>
+              <textarea name="pnotes" placeholder="Short description"></textarea>
+              <div class="mt-8"><button type="submit">Add Planner</button></div>
+            </form>
+          </div>
+        </section>
+      <section id="packages" class="view hidden">
+        <h2>Packages</h2>
+        <div id="packageList">No packages defined.</div>
+      </section>
+
+      <section id="add" class="view hidden">
+        <h2>Add Package</h2>
+        <form id="addForm">
+          <input name="title" placeholder="Package Title" required>
+          <input name="price" placeholder="Price" required>
+          <textarea name="details" placeholder="Details"></textarea>
+          <button type="submit">Add Package</button>
+        </form>
+        <p id="addMsg"></p>
+      </section>
+
+      <section id="contact" class="view hidden">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+          <input name="name" placeholder="Your name" required>
+          <input name="email" type="email" placeholder="Your email" required>
+          <textarea name="message" placeholder="Message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+        <p id="contactMsg"></p>
+      </section>
+    </main>
+    </div>
+    <!-- Top-right client profile (small control showing full name) -->
+    <div id="topProfileWrap" class="top-profile-wrap">
+      <button id="topProfileBtn" class="top-profile-btn" aria-haspopup="true" aria-expanded="false" title="Account">
+        <span id="topProfileInitials" class="top-profile-initials">G</span>
+        <span id="topProfileName" class="top-profile-name">Guest</span>
+      </button>
+      <div id="topProfilePanel" class="top-profile-panel hidden" role="dialog" aria-label="Account menu">
+          <div class="panel small-panel top-profile-panel-inner">
+            <div id="topProfileFullName" class="top-profile-fullname">Guest</div>
+            <div id="topProfileEmail" class="muted top-profile-email">guest@example.com</div>
+            <div class="top-profile-actions">
+              <button id="topViewProfileBtn" class="small">Profile</button>
+              <button id="topLogoutBtn" class="small">Logout</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+      <!-- Client Profile Modal (opens when user clicks Profile) -->
+      <div id="clientProfileModal" class="client-profile-modal hidden" role="dialog" aria-modal="true" aria-label="Client profile">
+        <div class="client-profile-content panel">
+          <div class="client-profile-header">
+            <h3>Client Profile</h3>
+          </div>
+          <div id="clientProfileInfo" class="client-profile-info">
+            <div><strong id="cpName">Guest</strong></div>
+            <div id="cpEmail" class="muted">guest@example.com</div>
+            <div id="cpPhone" class="muted">Phone: -</div>
+            <div id="cpPassword" class="muted">Password: -</div>
+          </div>
+
+          <h4 class="cp-section-title">Bookings</h4>
+          <div id="cpBookings" class="muted">No bookings yet</div>
+
+          <h4 class="cp-section-title">Track Updates</h4>
+          <div id="cpTracks" class="muted">No updates yet</div>
+          <div class="client-profile-footer">
+            <button id="closeClientProfile" class="small small-compact">Close</button>
+          </div>
+        </div>
+      </div>
+
+    <!-- Fixed back button (top-right) -->
+  <button id="fixedBackBtn" class="fixed-back" aria-label="Go back" title="Go back">
+    <!-- left arrow -->
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  
+  <!-- Fixed support bar (bottom) -->
+  <div id="supportBar" class="support-bar" role="region" aria-label="Support contact">
+    <div class="support-content">
+      <a href="tel:9676778810" class="support-link">📞 9676778810</a>
+      <span class="sep" aria-hidden="true">|</span>
+  <a href="mailto:mutteramgopal923@gmail.com" class="support-link">✉️ mutteramgopal923@gmail.com</a>
+    </div>
+  </div>
+</body>
+</html>
